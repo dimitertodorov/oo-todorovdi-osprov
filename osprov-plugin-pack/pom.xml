@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.govonca</groupId>
+        <artifactId>osprov-plugin-project</artifactId>
+        <version>1.0.001</version>
+    </parent>
+
+    <artifactId>osprov-plugin-pack</artifactId>
+    <packaging>jar</packaging>
+
+    <name>ITS - DCO - OS Provisioning Plugin Pack</name>
+    <url>http://www.ontario.ca</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>osprov-plugin</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.5</version>
+            </plugin>
+
+            <plugin>
+                <groupId>${sdk.group}</groupId>
+                <artifactId>oo-contentpack-maven-plugin</artifactId>
+                <version>${sdk.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-contentpack-plugin</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>generate-contentpack</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <destinationFolder>${project.build.outputDirectory}</destinationFolder>
+                    <artifactItems>
+                        <artifactItem>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>osprov-plugin</artifactId>
+                            <version>${project.version}</version>
+                        </artifactItem>
+                    </artifactItems>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
