@@ -1,6 +1,8 @@
 package org.govonca.oo.osprov.vmware;
 
+
 import org.govonca.oo.osprov.vmware.VIActions;
+import org.govonca.oo.osprov.vmware.ior.Inputs;
 
 import com.hp.oo.sdk.content.annotations.Action;
 import com.hp.oo.sdk.content.annotations.Output;
@@ -26,11 +28,12 @@ import java.util.ArrayList;
 public class DatastoreActions {
 
 
-    @Action(name = "getDatastoresJSON",
+    @Action(name = "Get All Datastores - JSON",
             description = "Get VI Datastore information and return it in JSON format.",
             outputs = {
                     @Output("result"),
                     @Output("datastoresJSON"),
+                    @Output("viSessionToken"),
                     @Output("result_message")
             },
             responses = {
@@ -38,10 +41,10 @@ public class DatastoreActions {
                     @Response(text = "Failure", field = "result", value = "0", matchType = MatchType.COMPARE_LESS, responseType = ResponseType.ERROR)
             })
     public Map<String, String> getDatastoresJSON(
-            @Param(value="host",
+            @Param(value=Inputs.HOST_VALUE,
                     required = true,
                     encrypted = false,
-                    description = "Target VI Host") String host,
+                    description = Inputs.HOST_DESCRIPTION) String host,
             @Param(value="user",
                     required = true,
                     encrypted = false,
@@ -61,7 +64,7 @@ public class DatastoreActions {
             @Param(value="closeSession",
                     required = false,
                     encrypted = false,
-                    description = "Close Session or Keep Open? (Not in Use Yet)") String closeSession,
+                    description = "Close Session or Keep Open?") String closeSession,
             @Param(value="viSessionToken",
                     required = false,
                     encrypted = true,
@@ -73,19 +76,23 @@ public class DatastoreActions {
 
     ){
         Map<String, String> resultMap = new HashMap<String, String>();
-        String viURL=protocol+"://"+host+":"+port+"/sdk";
+
         ServiceInstance si;
+
         ManagedEntity[] datastores;
+
         String datastoreJSON;
+
         List<DatastoreSummary> datastoreList = new ArrayList<DatastoreSummary>();
+
         Gson gson = new Gson();
+
         try{
             si = VIConnectionManager.getServiceInstance(host,user,password,protocol,port,viSessionToken);
 
         }catch(Exception e){
             resultMap.put("result","-1");
             resultMap.put("result_message","Error during connection to VI. ");
-            System.out.println(e);
             return resultMap;
         }
 
@@ -94,7 +101,7 @@ public class DatastoreActions {
         }catch (Exception e){
             resultMap.put("result","-1");
             resultMap.put("result_message","Error retrieving datastores ");
-            System.out.println(e);
+            resultMap.put("viSessionToken",VIConnectionManager.endVIServiceSession(si,closeSession));
             return resultMap;
         }
 
@@ -114,36 +121,25 @@ public class DatastoreActions {
         }else{
             resultMap.put("result","0");
             resultMap.put("result_message","Executed Successfully, but no datastores found in datacenter "+datacenter);
+            resultMap.put("viSessionToken",VIConnectionManager.endVIServiceSession(si,closeSession));
             return resultMap;
         }
+
+
 
 
         resultMap.put("result","0");
         resultMap.put("result_message","Executed Successfully");
         resultMap.put("datastoresJSON",datastoreJSON);
+        resultMap.put("viSessionToken",VIConnectionManager.endVIServiceSession(si,closeSession));
 
         return resultMap;
-
-
-
-
-
     }
 
-
-
-    public ManagedEntity[] getAllDatastores(ServiceInstance si, String datacenter)  throws InvalidProperty, RuntimeFault, RemoteException {
+    public ManagedEntity[] getAllDatastores(ServiceInstance si, String datacenter)  throws InvalidProperty, RuntimeFault, RemoteException, NullPointerException {
         Folder rootFolder = si.getRootFolder();
         Datacenter dc = (Datacenter) new InventoryNavigator(rootFolder).searchManagedEntity("Datacenter", datacenter);
         ManagedEntity[] datastores = new InventoryNavigator(dc).searchManagedEntities("Datastore");
-
         return datastores;
     }
-
-
-
-
-
-
-
 }

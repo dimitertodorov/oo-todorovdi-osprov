@@ -45,4 +45,24 @@ public class VIConnectionManager {
         }
 
     }
+
+
+    public static String endVIServiceSession(ServiceInstance si, String closeSession)
+    {
+
+        String viSessionToken="";
+        try{
+            if(closeSession.equals("true")){
+                si.getSessionManager().logout();
+                viSessionToken="";
+            }else{
+                String sessionToken = si.getServerConnection().getSessionStr();
+                viSessionToken=sessionToken;
+            }
+        }catch(Exception e){
+            viSessionToken="";
+            return viSessionToken;
+        }
+        return viSessionToken;
+    }
 }

@@ -4,7 +4,7 @@
 
     <groupId>org.govonca</groupId>
     <artifactId>osprov-plugin-project</artifactId>
-    <version>1.0.001</version>
+    <version>1.0.002</version>
     <packaging>pom</packaging>
 
     <name>ITS - DCO - GOVONCA - OSPROV Plugin Project</name>
