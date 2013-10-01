@@ -1,7 +1,7 @@
 package org.govonca.oo.osprov.vmware;
 
 
-import org.govonca.oo.osprov.vmware.VIActions;
+
 import org.govonca.oo.osprov.vmware.ior.Inputs;
 
 import com.hp.oo.sdk.content.annotations.Action;
@@ -41,10 +41,10 @@ public class DatastoreActions {
                     @Response(text = "Failure", field = "result", value = "0", matchType = MatchType.COMPARE_LESS, responseType = ResponseType.ERROR)
             })
     public Map<String, String> getDatastoresJSON(
-            @Param(value=Inputs.HOST_VALUE,
-                    required = true,
-                    encrypted = false,
-                    description = Inputs.HOST_DESCRIPTION) String host,
+            @Param(value        = Inputs.Values.HOST,
+                    required    = Inputs.Required.HOST,
+                    encrypted   = Inputs.Encrypted.HOST,
+                    description = Inputs.Descriptions.HOST) String host,
             @Param(value="user",
                     required = true,
                     encrypted = false,
@@ -109,13 +109,11 @@ public class DatastoreActions {
         if((datastores!=null)&& datastores.length!=0){
             Map<String, Map<String, String>> datastoreMap = new HashMap<String, Map<String, String>>();
 
-
             for(int i=0;i<datastores.length;i++){
                 Datastore ds = (Datastore)datastores[i];
                 DatastoreSummary dss = ds.getSummary();
                 datastoreList.add(dss);
             }
-
             //Serialize Summary listing to JSON. This
             datastoreJSON = gson.toJson(datastoreList);
         }else{

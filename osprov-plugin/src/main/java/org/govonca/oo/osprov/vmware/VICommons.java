@@ -1,8 +1,5 @@
 package org.govonca.oo.osprov.vmware;
 
-
-import org.govonca.oo.osprov.vmware.VIActions;
-
 import com.hp.oo.sdk.content.annotations.Action;
 import com.hp.oo.sdk.content.annotations.Output;
 import com.hp.oo.sdk.content.annotations.Param;
