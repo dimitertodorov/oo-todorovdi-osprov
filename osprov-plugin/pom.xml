@@ -11,8 +11,8 @@
     <artifactId>osprov-plugin</artifactId>
     <packaging>maven-plugin</packaging>
 
-    <name>TODOROVDI - OS Provisioning - VMActions</name>
-    <url>http://www.hp.com</url>
+    <name>todorovdi - OS Provisioning - VMActions</name>
+    <url>https://github.com/dimitertodorov/</url>
 
     <dependencies>
         <dependency>
