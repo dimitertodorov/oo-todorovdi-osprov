@@ -7,7 +7,7 @@
     <version>1.0.003</version>
     <packaging>pom</packaging>
 
-    <name>todorovdi - OSPROV Plugin Project</name>
+    <name>TODOROVDI - OSPROV Plugin Project</name>
     <url>https://github.com/dimitertodorov/</url>
 
     <properties>

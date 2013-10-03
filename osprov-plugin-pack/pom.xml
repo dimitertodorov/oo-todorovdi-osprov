@@ -11,7 +11,7 @@
     <artifactId>osprov-plugin-pack</artifactId>
     <packaging>jar</packaging>
 
-    <name>todorovdi - OS Provisioning Plugin Pack</name>
+    <name>TODOROVDI - OS Provisioning Plugin Pack</name>
     <url>https://github.com/dimitertodorov/</url>
 
     <dependencies>

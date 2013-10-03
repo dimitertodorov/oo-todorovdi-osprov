@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
-  <name>todorovdi - OS Provisioning - VMActions</name>
+  <name>TODOROVDI - OS Provisioning - VMActions</name>
   <description></description>
   <groupId>org.todorovdi</groupId>
   <artifactId>osprov-plugin</artifactId>
@@ -9,68 +9,6 @@
   <isolatedRealm>false</isolatedRealm>
   <inheritedByDefault>true</inheritedByDefault>
   <mojos>
-    <mojo>
-      <goal>build-repo</goal>
-      <description></description>
-      <requiresDirectInvocation>false</requiresDirectInvocation>
-      <requiresProject>false</requiresProject>
-      <requiresReports>false</requiresReports>
-      <aggregator>false</aggregator>
-      <requiresOnline>false</requiresOnline>
-      <inheritedByDefault>true</inheritedByDefault>
-      <implementation>GeneratedPluginRepoBuilderPlugin</implementation>
-      <language>java</language>
-      <instantiationStrategy>per-lookup</instantiationStrategy>
-      <executionStrategy>once-per-session</executionStrategy>
-      <threadSafe>false</threadSafe>
-      <parameters>
-        <parameter>
-          <name>session</name>
-          <type>org.apache.maven.execution.MavenSession</type>
-          <required>true</required>
-          <editable>false</editable>
-          <description></description>
-        </parameter>
-      </parameters>
-      <configuration>
-        <session implementation="org.apache.maven.execution.MavenSession">${session}</session>
-      </configuration>
-    </mojo>
-    <mojo>
-      <goal>action-metadata</goal>
-      <description></description>
-      <requiresDirectInvocation>false</requiresDirectInvocation>
-      <requiresProject>false</requiresProject>
-      <requiresReports>false</requiresReports>
-      <aggregator>false</aggregator>
-      <requiresOnline>false</requiresOnline>
-      <inheritedByDefault>true</inheritedByDefault>
-      <implementation>GeneratedActionMetadataPlugin</implementation>
-      <language>java</language>
-      <instantiationStrategy>per-lookup</instantiationStrategy>
-      <executionStrategy>once-per-session</executionStrategy>
-      <threadSafe>false</threadSafe>
-      <parameters>
-        <parameter>
-          <name>action</name>
-          <type>java.lang.String</type>
-          <required>true</required>
-          <editable>false</editable>
-          <description></description>
-        </parameter>
-        <parameter>
-          <name>session</name>
-          <type>org.apache.maven.execution.MavenSession</type>
-          <required>true</required>
-          <editable>false</editable>
-          <description></description>
-        </parameter>
-      </parameters>
-      <configuration>
-        <action implementation="java.lang.String">${action}</action>
-        <session implementation="org.apache.maven.execution.MavenSession">${session}</session>
-      </configuration>
-    </mojo>
     <mojo>
       <goal>execute</goal>
       <description></description>
@@ -113,6 +51,41 @@
       </requirements>
     </mojo>
     <mojo>
+      <goal>action-metadata</goal>
+      <description></description>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>false</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <implementation>GeneratedActionMetadataPlugin</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <threadSafe>false</threadSafe>
+      <parameters>
+        <parameter>
+          <name>action</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>session</name>
+          <type>org.apache.maven.execution.MavenSession</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description></description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <action implementation="java.lang.String">${action}</action>
+        <session implementation="org.apache.maven.execution.MavenSession">${session}</session>
+      </configuration>
+    </mojo>
+    <mojo>
       <goal>plugin-metadata</goal>
       <description></description>
       <requiresDirectInvocation>false</requiresDirectInvocation>
@@ -122,6 +95,33 @@
       <requiresOnline>false</requiresOnline>
       <inheritedByDefault>true</inheritedByDefault>
       <implementation>GeneratedPluginMetadataPlugin</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <threadSafe>false</threadSafe>
+      <parameters>
+        <parameter>
+          <name>session</name>
+          <type>org.apache.maven.execution.MavenSession</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description></description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <session implementation="org.apache.maven.execution.MavenSession">${session}</session>
+      </configuration>
+    </mojo>
+    <mojo>
+      <goal>build-repo</goal>
+      <description></description>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>false</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <implementation>GeneratedPluginRepoBuilderPlugin</implementation>
       <language>java</language>
       <instantiationStrategy>per-lookup</instantiationStrategy>
       <executionStrategy>once-per-session</executionStrategy>
