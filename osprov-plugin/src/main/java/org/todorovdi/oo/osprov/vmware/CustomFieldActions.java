@@ -132,7 +132,7 @@ public class CustomFieldActions {
             resultMap.put("result_message", "Error during connection to VI. ");
             return resultMap;
         }
-
+        Logger.getLogger(getClass()).debug("CustomFieldActions.setCustomField - SUCCESS - "+vmInventoryPath+" CF:"+vmCustomFieldKey+" VALUE:"+vmCustomFieldValue);
         return resultMap;
 
 

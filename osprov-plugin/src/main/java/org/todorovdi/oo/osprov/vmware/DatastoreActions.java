@@ -1,6 +1,7 @@
 package org.todorovdi.oo.osprov.vmware;
 
 //LOCAL Imports
+import org.apache.log4j.Logger;
 import org.todorovdi.oo.osprov.vmware.ior.*;
 
 //HP OO Imports
@@ -130,7 +131,7 @@ public class DatastoreActions {
         resultMap.put("result_message","Executed Successfully");
         resultMap.put("datastoresJSON",datastoreJSON);
         resultMap.put("viSessionToken",VIConnectionManager.endVIServiceSession(si,closeSession));
-
+        Logger.getLogger(getClass()).debug("DatastoreActions.getDatastoresJSON - SUCCESS - "+datastoreJSON);
         return resultMap;
     }
 
