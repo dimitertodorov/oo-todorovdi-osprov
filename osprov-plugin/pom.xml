@@ -3,15 +3,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.govonca</groupId>
+        <groupId>org.todorovdi</groupId>
         <artifactId>osprov-plugin-project</artifactId>
-        <version>1.0.002</version>
+        <version>1.0.003</version>
     </parent>
 
     <artifactId>osprov-plugin</artifactId>
     <packaging>maven-plugin</packaging>
 
-    <name>ITS - DCO - OS Provisioning - VMActions</name>
+    <name>TODOROVDI - OS Provisioning - VMActions</name>
     <url>http://www.hp.com</url>
 
     <dependencies>
@@ -35,6 +35,11 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
         </dependency>
     </dependencies>
 

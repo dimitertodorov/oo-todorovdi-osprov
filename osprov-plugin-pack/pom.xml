@@ -3,15 +3,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.govonca</groupId>
+        <groupId>org.todorovdi</groupId>
         <artifactId>osprov-plugin-project</artifactId>
-        <version>1.0.002</version>
+        <version>1.0.003</version>
     </parent>
 
     <artifactId>osprov-plugin-pack</artifactId>
     <packaging>jar</packaging>
 
-    <name>ITS - DCO - OS Provisioning Plugin Pack</name>
+    <name>TODOROVDI - OS Provisioning Plugin Pack</name>
     <url>http://www.ontario.ca</url>
 
     <dependencies>
