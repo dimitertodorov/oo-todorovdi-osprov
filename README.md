@@ -20,9 +20,14 @@ Debug logging properties are stored in log4j.properties in the plugin resources 
 The first action is "Set Custom Field"
 It takes as inputs some VI connection information, Inventory Path of a VM, and Custom Field key and Value.
 It creates the field if it does not exist, then sets it.
+
+
 Example string to execute from command line:
+
 mvn org.todorovdi:osprov-plugin:1.0.003:execute -Daction="Set Custom Field" -Duser=MYUSER -Dpassword=PASSWORD -Dport=443 -Dprotocol=https -Dhost=VCENTERIPORNAME -DvmCustomFieldKey="CI" -DvmCustomFieldValue="DDF" -DinventoryPath="DATACENTERNAME/vm/Tools/OSPROV/OSPROV49"
+
 Output:
+
 [INFO] --- osprov-plugin:1.0.003:execute (default-cli) @ osprov-plugin-project ---
 2013-10-03 11:28:38 DEBUG CustomFieldActions:87 - CustomFieldActions.setCustomField
 2013-10-03 11:28:41 DEBUG CustomFieldActions:135 - CustomFieldActions.setCustomField - SUCCESS - DATACENTERNAME/vm/Tools/OSPROV/OSPROV49 CF:CI VALUE:DDF
@@ -33,9 +38,11 @@ Provide VI connection information and a Datacenter. Returns a JSON formatted Str
 JSON is very handy since HPOO can easily play with it using Javascript scriptlets.
 
 Sample exec:
+
 mvn org.todorovdi:osprov-plugin:1.0.003:execute -Daction="Get All Datastores - JSON" -Duser=MYUSER -Dpassword=PASSWORD -Dport=443 -Dprotocol=https -Dhost=VCENTERIPORNAME -DvmDatacenter="DATACENTERNAME"
 
 Sample Output: (Formatted the string a bit for better viewability)
+
 [INFO] --- osprov-plugin:1.0.003:execute (default-cli) @ osprov-plugin-project ---
 2013-10-03 11:36:28 DEBUG DatastoreActions:134 - DatastoreActions.getDatastoresJSON - SUCCESS -[
     {
